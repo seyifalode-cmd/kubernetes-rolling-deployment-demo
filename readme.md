@@ -15,9 +15,11 @@ Build the code.
 mvn clean install
 ```
 
-Create a docker image using the built artifact.  The Dockerfile in this repo has all the required details.
+Create a docker image using the built artifact.  The Dockerfile in this repo has all the required details.  Before pushing the image to Docker Hub, you will need to provide username and password details.
 ```bash
-docker build -t shanemannion/spring-boot-app:vers-2
+docker build -t shanemannion/spring-boot-app:vers-2 .
+docker login
+docker push shanemannion/spring-boot-app:vers-2
 ```
 
 ## Deploy the built image to Kubernetes.
