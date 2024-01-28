@@ -1,8 +1,8 @@
 # Spring Boot App to demo rolling deployment feature in K8s.
 
-This readme and code relates to branch version2.  There are two branches, which represent two different sceanrios.
-version2 is the initial build and deployment of the application code
-version3 is an update to the deployment definition to support Rolling Upgrades, in addition to a small change to the application code to create different output for this version3 where a subsequent set of intructions can be found.
+This readme and code relates to branch version2.  There are two branches, which represent two different scenarios.
+**version2** is the initial build and deployment of the application code
+**version3** is an update to the deployment definition to support Rolling Upgrades, in addition to a small change to the application code to create different output for this version3 where a subsequent set of intructions can be found.
 
 ## Create an EC2 where the code can be built and then pushed to DockerHub
 This terraform-ansible code also installs docker.
@@ -41,14 +41,3 @@ This concludes this part of the exercise.
 
 To continue, change branch to version3.
 
-
-
-Follow these steps on all nodes to configure the EC2 for Kubernetes, then install kubelet, kubeadm and kubectl.
-
-### System Config
-
-You must disable Swap for kubelet to work properly.
-```bash
-sudo swapoff -a 
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-```
