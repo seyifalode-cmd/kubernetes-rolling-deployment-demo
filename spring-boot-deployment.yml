@@ -1,0 +1,44 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: springboot-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: springboot-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment
+  labels:
+    app: springboot-app
+spec:
+  selector:
+    matchLabels:
+      app: springboot-app
+  replicas: 4
+  minReadySeconds: 60
+  strategy:  
+    rollingUpdate:
+      maxSurge: 25% 
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: springboot-app
+      annotations:
+        kubernetes.io/change-cause: "Update to container image version - from 3 to 2"  
+    spec:
+      containers:
+      - name: springboot-app
+        image: shanemannion/spring-boot-app:2
+        ports:
+        - containerPort: 8080
