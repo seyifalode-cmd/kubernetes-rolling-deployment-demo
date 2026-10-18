@@ -1,4 +1,8 @@
-**Kubernetes Rolling Deployment Demo** — deploying a Spring Boot application to Kubernetes and demonstrating zero-downtime rolling updates across versioned container images.
+# Kubernetes Rolling Deployment Demo
+
+Oluwaseyi Michael Falode | Cloud & DevOps Engineering | Toronto, ON
+
+Deploying a Spring Boot application to Kubernetes and demonstrating zero-downtime rolling updates across versioned container images.
 
 ---
 
